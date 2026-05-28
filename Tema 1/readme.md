@@ -59,10 +59,7 @@ Python: Utiliza la librería NumPy, la cual está escrita en C y permite vectori
 
 1.5 Métodos iterativos y criterios de convergencia
 
-<img width="114" height="29" alt="image" src="https://github.com/user-attachments/assets/3b8579ca-5fcd-4dc0-9400-df9c5667f99b" />
-
 Un método iterativo calcula una secuencia de valores {x_1, x_2, x_3, , x_k} que busca aproximarse a la raíz o solución analítica 
-![Uploading image.png…]()
 
 .La ecuación general de recurrencia de un sistema iterativo unidimensional se expresa como:
 
