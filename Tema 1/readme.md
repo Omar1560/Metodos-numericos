@@ -109,6 +109,56 @@ import numpy as np
 
 def analizar_mediciones(datos, valor_verdadero): """ Calcula el sesgo, la media y la incertidumbre (desviación estándar) de un conjunto de datos experimentales. """ datos = np.array(datos, dtype=float) n = len(datos)
 
+ # 1. Calcular la media aritmética
+ media = np.mean(datos)
 
+# 2. Calcular el Sesgo (Error Sistemático)
+sesgo = media - valor_verdadero
+
+# 3. Calcular la Incertidumbre basada en la Desviación Estándar Muestral (ddof=1 para n-1)
+incertidumbre = np.std(datos, ddof=1)
+
+# Imprimir Reporte Técnico
+print("=" * 50)
+print("        REPORTE DE INCERTIDUMBRE Y SESGO")
+print("=" * 50)
+print(f"Número de muestras analizadas : {n}")
+print(f"Valor Nominal (Verdadero)     : {valor_verdadero:.2f} mm")
+print(f"Media de las lecturas         : {media:.2f} mm")
+print("-" * 50)
+print(f"SESGO DETECTADO               : {sesgo:+.2f} mm")
+print(f"INCERTIDUMBRE (Dispersión)    : ±{incertidumbre:.2f} mm")
+print("-" * 50)
+
+# Diagnóstico automatizado de Calidad
+print("DIAGNÓSTICO DEL PROCESO:")
+if abs(sesgo) > 0.05 and incertidumbre <= 0.03:
+    print("-> El sistema es PRECISO pero INEXACTO (Alto Sesgo, Baja Incertidumbre).")
+    print("   Acción: Calibrar el punto cero / offset de la máquina.")
+elif abs(sesgo) <= 0.05 and incertidumbre > 0.05:
+    print("-> El sistema es EXACTO pero IMPRECISO (Bajo Sesgo, Alta Incertidumbre).")
+    print("   Acción: Revisar vibraciones o rigidez estructural del equipo.")
+elif abs(sesgo) <= 0.05 and incertidumbre <= 0.03:
+    print("-> El sistema es EXACTO Y PRECISO. Operación óptima.")
+else:
+    print("-> El sistema es INEXACTO E IMPRECISO. Requiere mantenimiento general.")
+print("=" * 50)
+
+# --- Datos del Problema ---
+lecturas_ejes = [25.12, 25.15, 25.10, 25.14, 25.14]
+valor_diseno = 25.00
+
+# Ejecución del programa
+analizar_mediciones(lecturas_ejes, valor_diseno)
+
+#Salida
+
+#Número de muestras analizadas : 5
+#Valor Nominal (Verdadero)     : 25.00 mm
+#Media de las lecturas         : 25.13 mm
+
+#SESGO DETECTADO               : +0.13 mm
+#INCERTIDUMBRE (Dispersión)    : ±0.02 mm
+#DIAGNÓSTICO DEL PROCESO:
 
 
