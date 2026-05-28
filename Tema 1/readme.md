@@ -25,19 +25,30 @@ Incertidumbre: Intervalo en el que se asume que se encuentra el valor verdadero:
 
 Sesgo: Error sistemático medido como la diferencia entre la media de los datos calculados.
 <img width="123" height="29" alt="image" src="https://github.com/user-attachments/assets/c78bf55a-97a2-413e-b6c4-89ea92be1bbf" />
+
 1.3 Fórmulas analíticas de los Tipos de Errores
 
 En métodos numéricos, los errores se cuantifican de manera absoluta y relativa para evaluar la calidad de la aproximación.1. Error Absoluto (E_t)Es la diferencia numérica directa entre el valor verdadero (E) y el valor aproximado (A):
+
 <img width="343" height="31" alt="image" src="https://github.com/user-attachments/assets/3d6bce2b-1f3b-44b0-8002-20b94e393cc3" />
+
 2.Error Relativo Porcentual Verdadero
+
 Para que el error no dependa de la escala o magnitud de la variable, se normaliza respecto al valor verdadero:
+
 <img width="424" height="52" alt="image" src="https://github.com/user-attachments/assets/0a454273-2029-4038-8aaf-473976c3a927" />
+
 3.Error Relativo Porcentual Aproximado
-En problemas reales de ingeniería, no conocemos el valor verdadero. Por lo tanto, el error se calcula comparando la aproximación actual con la aproximación obtenida en el paso anterior (esencial en métodos iterativos):
+En problemas reales de ingeniería, no conocemos el valor verdadero. Por lo tanto, el error se calcula comparando la aproximación actual con la aproximación 
+obtenida en el paso anterior (esencial en métodos iterativos):
+
 <img width="502" height="54" alt="image" src="https://github.com/user-attachments/assets/492cbf15-f8bf-4ad3-a9f8-35ce2fca29f5" />
+
 Error de Truncamiento (Serie de Taylor)
 Ocurre al interrumpir un proceso matemático infinito. La fórmula matemática para modelar cualquier función suave mediante una aproximación polinomial es la Serie de Taylor:
+
 <img width="570" height="52" alt="image" src="https://github.com/user-attachments/assets/92567c96-f6a9-4849-8bef-c0136035b6c6" />
+
 1.4 Software de cómputo numérico
 
 Las operaciones numéricas se ejecutan mediante vectores y matrices usando software que implementa librerías de alto rendimiento (como LAPACK o BLAS).
@@ -47,13 +58,16 @@ MATLAB / Octave: Diseñados nativamente para el manejo de arreglos multidimensio
 Python: Utiliza la librería NumPy, la cual está escrita en C y permite vectorizar operaciones aritméticas, evitando los lentos ciclos for nativos de Python.
 
 1.5 Métodos iterativos y criterios de convergencia
+
 <img width="114" height="29" alt="image" src="https://github.com/user-attachments/assets/3b8579ca-5fcd-4dc0-9400-df9c5667f99b" />
 
 Un método iterativo calcula una secuencia de valores {x_1, x_2, x_3, , x_k} que busca aproximarse a la raíz o solución analítica 
 ![Uploading image.png…]()
 
 .La ecuación general de recurrencia de un sistema iterativo unidimensional se expresa como:
+
 <img width="113" height="34" alt="image" src="https://github.com/user-attachments/assets/5dcee143-77ac-4fcd-be8c-144c8c35688c" />
+
 Condición de Convergencia (Teorema del Punto Fijo)
 
 Para asegurar que un método iterativo va a aproximarse al resultado correcto en lugar de fallar (divergir), la derivada de la función iterativa g(x) evaluada en la vecindad de la solución debe cumplir con:
@@ -97,3 +111,9 @@ Este script procesa los datos, calcula los componentes de error y genera un repo
 import numpy as np
 
 def analizar_mediciones(datos, valor_verdadero): """ Calcula el sesgo, la media y la incertidumbre (desviación estándar) de un conjunto de datos experimentales. """ datos = np.array(datos, dtype=float) n = len(datos)
+
+
+
+
+
+
