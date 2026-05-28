@@ -11,6 +11,7 @@ n
  cifras significativas si el error aproximado porcentual cumple con:
 
 image
-Exactitud y Precisión
+<img width="184" height="35" alt="image" src="https://github.com/user-attachments/assets/0ef39f59-c877-4a82-92bd-dc63b8e578ec" />
+
 
 Exactitud: Proximidad de un valor calculado al valor verdadero. Precisión: Proximidad de los valores calculados entre sí al repetir el método.
