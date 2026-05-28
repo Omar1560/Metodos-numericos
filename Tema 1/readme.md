@@ -10,7 +10,6 @@ Cifra significativaEs el número de dígitos que se usan con confianza. Para det
 n
  cifras significativas si el error aproximado porcentual cumple con:
 
-image
 <img width="184" height="35" alt="image" src="https://github.com/user-attachments/assets/0ef39f59-c877-4a82-92bd-dc63b8e578ec" />
 
 
