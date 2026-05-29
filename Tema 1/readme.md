@@ -1,111 +1,142 @@
-TEMA 1: Introducción a los Métodos Numéricos
+1. -- Introducción a los Métodos Numéricos --
 
-1.1 Importancia de los métodos numéricos
+Los métodos numéricos son técnicas matemáticas que permiten obtener soluciones aproximadas a problemas que, generalmente, no tienen solución analítica exacta o cuya solución es muy difícil de calcular de forma directa. Se basan en algoritmos sistemáticos que transforman un problema matemático complejo en una serie de operaciones aritméticas simples, factibles de ejecutar con computadoras.
 
-Los métodos numéricos transforman problemas formulados mediante cálculo, álgebra lineal o ecuaciones diferenciales en operaciones aritméticas simples.Donde la matemática analítica busca una función exacta y = f(x), los métodos numéricos buscan una colección de puntos numéricos (x_i, y_i) que aproximen el comportamiento real con un margen de error controlado. Su importancia radica en que permiten resolver sistemas no lineales o geometrías complejas que no tienen solución exacta por métodos tradicionales.
+Históricamente, estos métodos existieron mucho antes de las computadoras modernas. Matemáticos como Newton, Euler, Gauss y Runge desarrollaron muchos de los algoritmos que hoy en día siguen siendo la base de la computación científica. Sin embargo, fue la aparición de las computadoras digitales lo que permitió aplicarlos a problemas de escala real en ingeniería, física, biología y economía.
 
-1.2 Conceptos básicos y sus fórmulas
+-- Definición formal --
 
-Cifra significativaEs el número de dígitos que se usan con confianza. Para determinar el número de cifras significativas de un resultado basado en su error, se utiliza el Criterio de Cómputo de Scarboroug:Si se garantiza que el error numérico es menor que un límite preestablecido, el resultado es correcto hasta 
-n
- cifras significativas si el error aproximado porcentual cumple con:
+Un método numérico es un procedimiento algorítmico que aproxima la solución de un problema matemático mediante un número finito de operaciones aritméticas, produciendo un resultado con un error controlado y medible
 
-<img width="184" height="35" alt="image" src="https://github.com/user-attachments/assets/0ef39f59-c877-4a82-92bd-dc63b8e578ec" />
+1.1 Importancia de los Métodos Numéricos
 
+La importancia de los métodos numéricos radica en su capacidad para resolver problemas del mundo real que de otro modo serían intratables. En prácticamente todas las ramas de la ingeniería y las ciencias aplicadas, los modelos matemáticos conducen a ecuaciones que no admiten solución analítica cerrada.
 
-Exactitud: Proximidad de un valor calculado al valor verdadero. Precisión: Proximidad de los valores calculados entre sí al repetir el método.
+¿Por qué son necesarios los métodos numéricos?
 
-<img width="866" height="276" alt="image" src="https://github.com/user-attachments/assets/7eccedbc-b0ba-4e0a-b86c-7663305ac392" />
+•	La mayoría de las ecuaciones diferenciales ordinarias y parciales que modelan fenómenos físicos reales no tienen solución analítica.
+•	Los sistemas de ecuaciones lineales de gran dimensión, provenientes de la discretización de modelos continuos, requieren algoritmos eficientes.
+•	La integración y diferenciación numérica son esenciales cuando se trabaja con datos experimentales discretos
 
-Incertidumbre y Sesgo
+<img width="626" height="276" alt="image" src="https://github.com/user-attachments/assets/ab1c59fc-e18e-422b-a1ff-b897b94110c8" />
 
-Incertidumbre: Intervalo en el que se asume que se encuentra el valor verdadero:
-<img width="128" height="27" alt="image" src="https://github.com/user-attachments/assets/2f6440b6-b858-40c3-9503-31c83558af71" />
-(donde U es la incertidumbre).
+1.2 Conceptos Básicos
 
-Sesgo: Error sistemático medido como la diferencia entre la media de los datos calculados.
-<img width="123" height="29" alt="image" src="https://github.com/user-attachments/assets/c78bf55a-97a2-413e-b6c4-89ea92be1bbf" />
+Antes de profundizar en los métodos numéricos, es fundamental comprender los conceptos básicos que se utilizan para describir la calidad y confiabilidad de los resultados obtenidos. Estos conceptos permiten evaluar y comparar distintos métodos entre sí.
 
-1.3 Fórmulas analíticas de los Tipos de Errores
+1.2.1 Cifras Significativas
 
-En métodos numéricos, los errores se cuantifican de manera absoluta y relativa para evaluar la calidad de la aproximación.1. Error Absoluto (E_t)Es la diferencia numérica directa entre el valor verdadero (E) y el valor aproximado (A):
+Las cifras significativas (o dígitos significativos) son los dígitos de un número que tienen significado físico o matemático en el contexto de una medición o cálculo. Son todos los dígitos que se conocen con certeza más el primero que es incierto.
 
-<img width="343" height="31" alt="image" src="https://github.com/user-attachments/assets/3d6bce2b-1f3b-44b0-8002-20b94e393cc3" />
+<img width="628" height="196" alt="image" src="https://github.com/user-attachments/assets/c29a86e9-f312-4627-8b72-d81be6739a1d" />
 
-2.Error Relativo Porcentual Verdadero
+1.2.2 Precisión vs. Exactitud
 
-Para que el error no dependa de la escala o magnitud de la variable, se normaliza respecto al valor verdadero:
+En el contexto de los métodos numéricos, es crucial distinguir entre precisión y exactitud, ya que son conceptos distintos aunque con frecuencia se confunden en el lenguaje cotidiano
 
-<img width="424" height="52" alt="image" src="https://github.com/user-attachments/assets/0a454273-2029-4038-8aaf-473976c3a927" />
+<img width="621" height="51" alt="image" src="https://github.com/user-attachments/assets/8a5120d2-f325-485c-9bd1-5dd757704a3f" />
 
-3.Error Relativo Porcentual Aproximado
-En problemas reales de ingeniería, no conocemos el valor verdadero. Por lo tanto, el error se calcula comparando la aproximación actual con la aproximación 
-obtenida en el paso anterior (esencial en métodos iterativos):
+<img width="618" height="46" alt="image" src="https://github.com/user-attachments/assets/71ee7b7f-8d87-4265-8639-775372b471a2" />
 
-<img width="502" height="54" alt="image" src="https://github.com/user-attachments/assets/492cbf15-f8bf-4ad3-a9f8-35ce2fca29f5" />
+<img width="633" height="154" alt="image" src="https://github.com/user-attachments/assets/1b3fdfad-f91d-469b-9c5b-0d67739e4a44" />
 
-Error de Truncamiento (Serie de Taylor)
-Ocurre al interrumpir un proceso matemático infinito. La fórmula matemática para modelar cualquier función suave mediante una aproximación polinomial es la Serie de Taylor:
+1.3 Tipos de Errores
 
-<img width="570" height="52" alt="image" src="https://github.com/user-attachments/assets/92567c96-f6a9-4849-8bef-c0136035b6c6" />
+En los métodos numéricos, los errores son inevitables. Sin embargo, podemos clasificarlos, cuantificarlos y controlarlos. Conocer los tipos de errores es fundamental para elegir el método más apropiado y para interpretar correctamente los resultados.
 
-1.4 Software de cómputo numérico
+1.3.1 Error Verdadero o Absoluto
 
-Las operaciones numéricas se ejecutan mediante vectores y matrices usando software que implementa librerías de alto rendimiento (como LAPACK o BLAS).
+<img width="627" height="52" alt="image" src="https://github.com/user-attachments/assets/70fb04bf-cabb-4b23-9f84-54a1e2942db2" />
 
-MATLAB / Octave: Diseñados nativamente para el manejo de arreglos multidimensionales.
+El error verdadero es la diferencia entre el valor exacto (teórico) y el valor calculado por el método numérico. En la práctica, raramente se conoce el valor verdadero, por lo que esta definición es más conceptual que operativa.
 
-Python: Utiliza la librería NumPy, la cual está escrita en C y permite vectorizar operaciones aritméticas, evitando los lentos ciclos for nativos de Python.
+1.3.2 Error Relativo
 
-1.5 Métodos iterativos y criterios de convergencia
+<img width="617" height="68" alt="image" src="https://github.com/user-attachments/assets/4001eadd-2e26-4e4e-a249-49fb0e5d2cc4" />
 
-Un método iterativo calcula una secuencia de valores {x_1, x_2, x_3, , x_k} que busca aproximarse a la raíz o solución analítica 
+El error relativo es más informativo que el error absoluto porque lo relaciona con la magnitud del valor verdadero. Un error de 1 metro es insignificante si se mide la distancia a la Luna, pero catastrófico si se mide la dimensión de un componente electrónico
 
-.La ecuación general de recurrencia de un sistema iterativo unidimensional se expresa como:
+1.3.3 Error Aproximado (Criterio de Parada)
 
-<img width="113" height="34" alt="image" src="https://github.com/user-attachments/assets/5dcee143-77ac-4fcd-be8c-144c8c35688c" />
+En los métodos iterativos, no se conoce el valor verdadero, por lo que se utiliza el error aproximado: la diferencia entre dos iteraciones consecutivas. Este error se usa como criterio de parada del algoritmo
 
-Condición de Convergencia (Teorema del Punto Fijo)
+<img width="614" height="46" alt="image" src="https://github.com/user-attachments/assets/d9443a72-2935-4e5e-9aed-834d8c4c10b5" />
 
-Para asegurar que un método iterativo va a aproximarse al resultado correcto en lugar de fallar (divergir), la derivada de la función iterativa g(x) evaluada en la vecindad de la solución debe cumplir con:
+1.3.4 Error de Redondeo
 
-<img width="97" height="29" alt="image" src="https://github.com/user-attachments/assets/63b039e5-6d45-4f61-82c3-c7561ac9117b" />
+El error de redondeo ocurre porque las computadoras solo pueden representar un número finito de dígitos. Los números reales con infinitos decimales (como pi, e, o 1/3) deben truncarse al número de bits disponibles en el procesador.
 
-Algoritmos de solucion
+<img width="630" height="218" alt="image" src="https://github.com/user-attachments/assets/a03de9c4-1590-4c2b-8818-2d8ccdbc636a" />
 
-Métodos Cerrados (Bracketing Methods)
+1.3.5 Error de Truncamiento
 
-Requieren de dos valores iniciales (x_l inferior y x_u superior) que encierren a la raíz. Se basan en el Teorema del Valor Intermedio, el cual matemáticamente dice que si una función continua cambia de signo en un intervalo, existe al menos una raíz en ese intervalo:
+El error de truncamiento se produce cuando se usa un procedimiento matemático finito para aproximar uno que, en su forma exacta, requeriría un número infinito de operaciones. El ejemplo más claro es la aproximación de una función mediante los primeros términos de su serie de Taylor
 
-<img width="227" height="148" alt="image" src="https://github.com/user-attachments/assets/7a2b6330-3fa1-4816-9807-b805d91ea7e9" />
+<img width="633" height="275" alt="image" src="https://github.com/user-attachments/assets/9e881225-3d6f-494a-9165-4201cfa3b8f7" />
 
-Métodos Abiertos (Open Methods)
-No necesitan encerrar la raíz, solo requieren uno o dos valores iniciales de arranque. Son algoritmos mucho más rápidos (convergencia veloz), pero corren el riesgo de divergir (fallar).Algoritmo de Newton-Raphson: Utiliza la recta tangente a la curva en el punto actual para proyectar el siguiente valor sobre el eje 
-x
-. Es el algoritmo más eficiente si se conoce la derivada.
+1.4 Software de Cómputo Numérico
 
-Fórmula del algoritmo:
+El avance de los métodos numéricos está íntimamente ligado al desarrollo de software especializado. Actualmente existen numerosas herramientas, desde lenguajes de programación de propósito general hasta paquetes matemáticos altamente especializados, que facilitan la implementación y visualización de estos métodos.
 
-<img width="227" height="106" alt="image" src="https://github.com/user-attachments/assets/e5353ff5-4a40-4593-a556-0f8abd4df16d" />
+1.4.1 Lenguajes de Programación
 
+<img width="627" height="235" alt="image" src="https://github.com/user-attachments/assets/a58cc39c-bd58-4696-b991-27567f16cd08" />
 
-Enunciado del Problema (Control de Calidad en Manufactura)
+1.4.2 Librerías y Entornos Especializados
 
-Un ingeniero de control de calidad está calibrando una máquina automatizada que corta ejes de transmisión para motores. El plano de diseño exige que el diámetro exacto de cada eje sea de 25.00MM (Este es nuestro Valor Verdadero, x).Para evaluar el estado de la máquina, se toma una muestra aleatoria de 5 ejes cortados consecutivamente y se miden con un micrómetro láser de alta precisión. Las lecturas obtenidas son:
+•	NumPy / SciPy (Python): Álgebra lineal, optimización, integración, ecuaciones diferenciales.
+•	LAPACK / BLAS: Librerías de bajo nivel para álgebra lineal, base de muchos otros paquetes.
+•	Mathematica / Wolfram Alpha: Cálculo simbólico y numérico integrado.
+•	GNU Octave: Alternativa libre a MATLAB con alta compatibilidad.
+•	R: Enfocado en estadística y análisis de datos.
+•	OpenFOAM: Dinámica de fluidos computacional de código abierto.
 
-<img width="314" height="32" alt="image" src="https://github.com/user-attachments/assets/57ea0333-bedb-4732-a747-2793022c5a55" />
+1.4.3 Ejemplo práctico en Python
 
-Se solicita:
+<img width="608" height="88" alt="image" src="https://github.com/user-attachments/assets/d93981b7-c895-4904-a707-8e747df6ae1f" />
+<img width="608" height="128" alt="image" src="https://github.com/user-attachments/assets/ddd92e88-93c7-49eb-8705-f210d21344d2" />
 
-Calcular el Sesgo de la máquina de corte.Calcular la Incertidumbre de las mediciones utilizando la desviación estándar de la muestra como indicador de la dispersión con un factor de cobertura básico .Determinar si el problema de la máquina es de Exactitud o de Precisión.
+1.5 Métodos Iterativos
 
-<img width="1097" height="576" alt="image" src="https://github.com/user-attachments/assets/a165570c-af38-45ee-8124-e39218f6804f" />
+Los métodos iterativos son algoritmos que generan una secuencia de aproximaciones sucesivas a la solución, mejorando la estimación en cada paso hasta alcanzar la precisión deseada. Son especialmenteP útiles cuando no existe una fórmula directa (de forma cerrada) para calcular la solución
 
-Código en Python para Automatizar el Análisis
+1.5.1 Convergencia y Divergencia
 
-Este script procesa los datos, calcula los componentes de error y genera un reporte limpio en la terminal.
+Un método iterativo converge cuando la secuencia de aproximaciones se acerca al valor verdadero. Diverge cuando las aproximaciones se alejan indefinidamente. La convergencia depende tanto del método como del problema y la estimación inicial.
 
-import numpy as np
+<img width="629" height="73" alt="image" src="https://github.com/user-attachments/assets/af35115c-fa85-4f13-856e-1fa3b0021f9d" />
 
-def analizar_mediciones(datos, valor_verdadero): """ Calcula el sesgo, la media y la incertidumbre (desviación estándar) de un conjunto de datos experimentales. """ datos = np.array(datos, dtype=float) n = len(datos)
-<img width="654" height="778" alt="image" src="https://github.com/user-attachments/assets/c9837018-e7fa-4e2b-a198-d69bca856571" />
+1.5.2 Método de Bisección
+
+El método de bisección es el método iterativo más simple y robusto. Requiere que la función cambie de signo en un intervalo [a, b], lo que garantiza la existencia de al menos una raíz por el Teorema de Valor Intermedio
+
+<img width="629" height="263" alt="image" src="https://github.com/user-attachments/assets/f0c897c0-41f5-4db2-86b8-cbfba7fbb3bb" />
+
+1.5.3 Método de Newton-Raphson
+
+El método de Newton-Raphson es uno de los algoritmos iterativos más poderosos para encontrar raíces. Utiliza la derivada de la función para construir la tangente a la curva en el punto actual y usa su intersección con el eje x como la siguiente aproximación
+
+<img width="628" height="55" alt="image" src="https://github.com/user-attachments/assets/fb483c5b-e56c-48d1-b7eb-11c24338965e" />
+
+Este método tiene convergencia cuadrática cerca de la raíz, lo que significa que el número de dígitos correctos se duplica en cada iteración. Sin embargo, puede diverger si la estimación inicial es muy lejana a la raíz o si f'(x) = 0 en algún punto de la iteración.
+
+1.5.4 Método de la Secante
+
+El método de la secante es una modificación del método de Newton-Raphson que evita el cálculo de la derivada, aproximándola mediante la pendiente de una secante entre dos puntos consecutivos
+
+<img width="629" height="72" alt="image" src="https://github.com/user-attachments/assets/cd15f82d-27a0-43c9-8f02-d7d80ce527e0" />
+
+Requiere dos estimaciones iniciales en lugar de una, y tiene una convergencia superlineal (orden ≈ 1.618, el número áureo), lo que lo hace más lento que Newton-Raphson pero más robusto en casos donde la derivada es difícil de calcular.
+
+1.5.5 Comparación de Métodos Iterativos
+
+<img width="625" height="235" alt="image" src="https://github.com/user-attachments/assets/b261a15d-1e0a-45fa-9e08-db7bd24e1e26" />
+
+1.5.6 Criterios de Parada
+
+Todos los métodos iterativos necesitan un criterio que indique cuándo detener el proceso. Los criterios más comunes son:
+
+1.	Error relativo aproximado: |epsilon_a| < epsilon_s (criterio de Scarborough)
+2.	Número máximo de iteraciones: previene bucles infinitos en caso de divergencia.
+3.	Valor de la función: |f(x_n)| < delta, el valor de la función está suficientemente cerca de cero.
+4.	Cambio absoluto: |x_{n+1} - x_n| < tolerancia_absoluta
