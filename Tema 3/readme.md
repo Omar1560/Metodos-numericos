@@ -24,6 +24,7 @@ Los métodos directos son algoritmos que determinan la solución exacta de un si
 Consiste en transformar la matriz de coeficientes original $A$ en una matriz triangular superior mediante operaciones elementales entre renglones. Una vez obtenida la forma triangular, las incógnitas se calculan de abajo hacia arriba mediante un proceso de **sustitución hacia atrás**.
 
 Dado el sistema:
+
 $$\begin{bmatrix} a_{11} & a_{12} & a_{13} \\ 0 & a_{22}' & a_{23}' \\ 0 & 0 & a_{33}'' \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix} = \begin{bmatrix} b_1 \\ b_2' \\ b_3'' \end{bmatrix}$$
 
 La última variable se despeja directamente: $x_3 = b_3'' / a_{33}''$, y se sustituye recursivamente en los renglones superiores.
