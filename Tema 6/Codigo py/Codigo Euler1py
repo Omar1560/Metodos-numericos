@@ -1,0 +1,20 @@
+def f1(t, T):
+    Tm = 20
+    k = 0.1
+    return -k * (T - Tm)
+ 
+t0 = 0
+T0 = 80
+h = 1      
+pasos = 5
+
+t = t0
+T = T0
+
+print(f"Paso 0: t = {t:.1f} min -> Temperatura = {T:.2f}°C")
+
+for i in range(1, pasos + 1):
+    T = T + h * f1(t, T)
+    t = t + h
+    print(f"Paso {i}: t = {t:.1f} min -> Temperatura = {T:.2f}°C")
+ 
