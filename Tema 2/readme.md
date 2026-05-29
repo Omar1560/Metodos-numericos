@@ -115,4 +115,26 @@ $$P_n(x) = \sum_{i=0}^{n} L_i(x) \cdot y_i$$
 
 Donde los coeficientes de base se calculan como productos combinados:
 
-$$L_i(x) = \prod_{j=0, j \neq i}^{n} \frac{x - x_j}{x_i - x_
+$$L_i(x) = \prod_{j=0, j \neq i}^{n} \frac{x - x_j}{x_i - x_j}$$
+
+
+
+### Ejemplo Práctico (Lagrange de Grado 1)
+**Datos dados:** $(x_0=1, y_0=2)$ y $(x_1=4, y_1=7)$. Se requiere interpolar el valor estimado cuando **$x = 2$**.
+
+1.  **Calcular los polinomios base $L_0$ y $L_1$:**
+    $$L_0(2) = \frac{2 - 4}{1 - 4} = \frac{-2}{-3} = \frac{2}{3}$$
+    $$L_1(2) = \frac{2 - 1}{4 - 1} = \frac{1}{3}$$
+
+2.  **Construir el polinomio final $P_1(2)$:**
+    $$P_1(2) = \left(\frac{2}{3}\right)(2) + \left(\frac{1}{3}\right)(7) = \frac{4}{3} + \frac{7}{3} = \frac{11}{3} \approx 3.6667$$
+
+---
+
+## 2.5 Aplicaciones
+
+Los métodos numéricos estudiados en esta unidad tienen un impacto directo en la resolución de problemas reales de ingeniería y ciencias:
+
+* **Ingeniería Química e Industrial:** Cálculo del factor de compresibilidad de gases reales empleando ecuaciones de estado no lineales complejas (como *Van der Waals* o *Redlich-Kwong*). Como el despeje analítico del volumen o la presión es imposible, se emplean algoritmos de bisección o punto fijo.
+* **Análisis de Estructuras (Ingeniería Civil):** Determinación de las curvas de deflexión y puntos de máxima tensión en vigas o puentes sometidos a cargas variables a través de la interpolación polinomial de los datos arrojados por sensores físicos.
+* **Ciencias de la Computación y Gráficos:** Renderizado de curvas suaves y modelado en 3D a través de puntos de control definidos empleando interpolaciones por trazadores (*splines*), optimizando el rendimiento gráfico con baja carga computacional.
